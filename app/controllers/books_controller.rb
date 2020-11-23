@@ -1,4 +1,5 @@
 class BooksController < ApplicationController
+  before_action :set_book, only: [:edit, :show]
   before_action :move_to_index, except: [:index, :show]
 
   def index
@@ -19,12 +20,14 @@ class BooksController < ApplicationController
   end
 
   def edit
-    @book = Book.find(params[:id])
   end
 
   def update
     book = Book.find(params[:id])
     book.update(book_params)
+  end
+
+  def show
   end
 
   private
@@ -33,6 +36,10 @@ class BooksController < ApplicationController
   end
 
   private
+
+  def set_book
+    @book = Book.find(params[:id])
+  end
 
   def move_to_index
     unless user_signed_in?
