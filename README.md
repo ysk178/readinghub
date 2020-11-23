@@ -19,7 +19,7 @@ has_many :comments
 | ----------- | ---------- | ------------------------------ |
 | title       | string     | null: false                    |
 | author      | string     | null: false                    |
-| explanation | text       | null: false                    |
+| text        | text       | null: false                    |
 | genre_id    | integer    | null: false                    |
 | user        | references | null: false, foreign_key: true |
 

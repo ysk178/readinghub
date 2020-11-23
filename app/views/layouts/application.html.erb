@@ -1,7 +1,7 @@
 <!DOCTYPE html>
 <html>
   <head>
-    <title>Readinghub</title>
+    <title>ReadingHub</title>
     <%= csrf_meta_tags %>
     <%= csp_meta_tag %>
 
@@ -10,6 +10,19 @@
   </head>
 
   <body>
+    <header class="header">
+      <div class="header__bar row">
+        <h1 class="grid-6"><a href="/">ReadingHub</a></h1>
+        <div class="user_nav grid-6">
+          <a class="post" href="/books/new">投稿する</a>
+        </div>
+      </div>
+    </header>
     <%= yield %>
+    <footer>
+      <p>
+        Copyright ReadingHub 2020.
+      </p>
+    </footer>
   </body>
 </html>
