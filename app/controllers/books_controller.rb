@@ -3,7 +3,7 @@ class BooksController < ApplicationController
   before_action :move_to_index, except: [:index, :show]
 
   def index
-    @books = Book.all
+    @books = Book.includes(:user)
   end
 
   def new
@@ -32,10 +32,8 @@ class BooksController < ApplicationController
 
   private
   def book_params
-    params.require(:book).permit(:title, :author, :image, :text)
+    params.require(:book).permit(:title, :author, :image, :text).merge(user_id: current_user.id)
   end
-
-  private
 
   def set_book
     @book = Book.find(params[:id])

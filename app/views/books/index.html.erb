@@ -7,19 +7,23 @@
             <li>
               <%= link_to '詳細', book_path(book.id), method: :get %>
             </li>
+          <% if user_signed_in? && current_user.id == book.user_id %>
             <li>
               <%= link_to '編集', edit_book_path(book.id), method: :get %>
             </li>
             <li>
               <%= link_to '削除', book_path(book.id), method: :delete %>
             </li>
+          <% end %> 
           </ul>
         </div>
       <%= book.title %>
       <%= book.author %>
       <p><%= book.text %></p>
       <span class="name">
-        <%= "name" %>
+        <a href="/users/<%= book.user.id %>">
+          <span>投稿者</span><%= book.user.nickname %>
+        </a>
       </span>
     </div>
   <% end %>
